@@ -37,7 +37,7 @@ func main() {
 func InsertData(w http.ResponseWriter, r *http.Request) {
 	// Verificar que el método sea POST
 	if r.Method != http.MethodPost {
-		http.Error(w, "Método no permitido", http.StatusMethodNotAllowed)
+		http.Error(w, "Método no permitido"+r.Method, http.StatusMethodNotAllowed)
 		return
 	}
 
@@ -63,7 +63,7 @@ func InsertData(w http.ResponseWriter, r *http.Request) {
 
 	dbURL := dbUser + ":" + dbPassword + "@tcp(" + dbHost + ":" + dbPort + ")/railway"
 	db, err := sql.Open("mysql", dbURL)
-	log.Printf("url %v", err)
+	// log.Printf("url %v", dbURL)
 	if err != nil {
 		log.Printf("Error al conectar a la base de datos: %v", err)
 		http.Error(w, "Error al conectar a la base de datos", http.StatusInternalServerError)
