@@ -21,7 +21,7 @@ func main() {
 		godotenv.Load("config/.properties")
 	}
 
-	host := os.Getenv("HOST")
+	host := os.Getenv("AUXHOST")
 	if host == "" {
 		host = "0.0.0.0" // Host predeterminado
 	}
