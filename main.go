@@ -36,16 +36,16 @@ func main() {
 
 func InsertData(w http.ResponseWriter, r *http.Request) {
 	// Verificar que el método sea POST
-	if r.Method != http.MethodPost {
-		http.Error(w, "Método no permitido"+r.Method, http.StatusMethodNotAllowed)
-		return
-	}
+	// if r.Method != http.MethodPost {
+	// 	http.Error(w, "Método no permitido"+r.Method, http.StatusMethodNotAllowed)
+	// 	return
+	// }
 
 	// Decodificar el JSON del cuerpo de la solicitud
 	var requestData models.Request
 	err := json.NewDecoder(r.Body).Decode(&requestData)
 	if err != nil {
-		http.Error(w, "Error al decodificar JSON", http.StatusBadRequest)
+		http.Error(w, "Error al decodificar JSON, err="+err.Error(), http.StatusBadRequest)
 		return
 	}
 
